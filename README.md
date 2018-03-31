@@ -1,23 +1,42 @@
+
 # Shakespeare Project
-Migrating this from vanilla Python into Django. To start the server, `cd` into `shakespeare` and then run `python3 manage.py runserver`.
+ A Django app that lets users explore and analyze the text of Shakespeare's plays. Using Python to scrape [the web](http://shakespeare.mit.edu/), I converted the text of the plays into a list of data-frames and saved them as CSVs with Pandas. The next step is to save it in a MySQL database.
+
+To start the server, either `git clone` or download the zip of this repo, and then `cd` into `shakespeare` and then run `python3 manage.py runserver`.
 
 ## Getting Started
-(Keeping these notes here.) The steps for setting up a Django app are (sorry this is incomplete):
+(Keeping these notes here.) The steps for setting up a Django app are:
 
+### Basics:
 - `cd` into a new directory.
+- Get venv: `pip3 install venv`.
+- Set up a virtual environment: `python3 -m venv new_env` (you can name it anything, doesn't have to be `new_env`).
+- Run that environment: `source new_env/bin/activate`. (Use `deactivate` to exist.)
 - `pip install django` or `pip3 install django`.
-- Set up a virtual environment by running ``
-- Activate the virtual environment. (Why did we need this again?)
-- (Note that in a virtual environment, you'll need to reinstall dependencies that you have saved globally, like `pandas`).
-- createapp and startapp
-- Had to alter something in settings.py
-- You can't make HTML comments either...at least inside for loops?
+- `django-admin startproject my_name` (Again, `my_name` can be changed.).
+- Then `cd` into the created folder, and `python3 manage.py runserver` to spin up the server. (Use ctrl + C to exit.)
+- `django-admin startapp my_app` (You guessed it, `my_app` can be changed!).
+- Then you need to manually add `url(r'^$', include('my_app.urls'))` to the `urlpatterns` in the `urls.py` file that lives inside your `my_name` folder. This directs the homepage to your index.html.
+- Inside views.py, `from django.http import HttpResponse`, then
+```def index(req):
+  return HttpResponse("<h1>Hello</h1>")
+  ```
+- Inside the folder `my_app`, create `urls.py` and inside of it,
+```from django.conf.urls import url
+from . import views
+urlpatterns = [
+  url(r'^$', views.index, name='index')
+]
+```
 
-
+### Database setup:
+- Next is getting the database set up.
+- `pip3 install mysqlclient`. 
 
 ## Issues:
 - Hmm, encountering trouble reading in CSVs via Django... Maybe the best solution is just to put everything in a database via the original script, and hook up to that database with Django.
 - The solution was to change something in Settings.
+- Strange that Django breaks if we have commented out code within our loops in the index.
 
 ## To do:
 - [ ] Convert CSVs into a database.
