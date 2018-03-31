@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <!-- <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script> -->
-    <!-- <script src="static/jquery.js" charset="utf-8"></script> -->
-    <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-    <script type="text/javascript">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script> -->
+  <!-- <script src="static/jquery.js" charset="utf-8"></script> -->
+  <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+  <script type="text/javascript">
 
-      // google.load("visualization", "1", {packages:["corechart"]});
-    </script>
+  // google.load("visualization", "1", {packages:["corechart"]});
+  </script>
 
-    <!-- {% load static %}
-   <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
-   <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script> -->
-    <title>Django Weather!</title>
-  </head>
-  <body>
-        <!-- {% csrf_token %} -->
-        {{ lear }}
+  <!-- {% load static %}
+  <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+  <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script> -->
+  <title>Django Weather!</title>
+</head>
+<body>
+  <!-- {% csrf_token %} -->
+  <!-- {{ lear }} -->
+  <!-- <div class="left">
+  {% for l in lear.Lines %}
+  {{l}}<br>{{forloop.counter}}
+  {% endfor %}
+</div>
 
-    <script type="text/javascript">
-      console.log('hi');
-    </script>
+<div class="right">
+{% for l in lear.Speakers %}
+<li>{{l}}</li>
+{% endfor %}
+</div> -->
 
-    <h2>hi hi hi </h2>
+
+<div id="table">
+  <table border=0>
+    <thead>
+      <tr>
+        {% for key in lear %}
+        <th>{{ key }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for l in lear.Lines %}
+      <tr><td>{{ l }}</td></tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+console.log('hi');
+</script>
+
+<h2>hi hi hi </h2>
 
 
 </body>

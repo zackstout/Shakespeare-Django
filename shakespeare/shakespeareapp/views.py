@@ -27,8 +27,10 @@ df = pd.read_csv('shakespeareapp/csvs/KingLear.csv', index_col=0)
 def index(request):
     # return HttpResponse("<h2>ahoy</h2>")
 
+    length = len(df['Lines'])
     context = {
-            'lear': df
-        }
+            'lear': df,
+            'length': length,
+            }
 
     return render(request, 'index.html', context)

@@ -54,6 +54,7 @@ ROOT_URLCONF = 'shakespeare.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        
         # Changing this from empty array:
         'DIRS': ['shakespeareapp/templates'],
         'APP_DIRS': True,
